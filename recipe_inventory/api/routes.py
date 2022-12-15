@@ -10,8 +10,8 @@ def getdata():
 
 
 # CREATE RECIPE
-@api.route('/recipes', methods = ['POST'])
-def create_recipe():
+@api.route('/recipes/<token>', methods = ['POST'])
+def create_recipe(token):
     recipeid = request.json['recipeid']
     title = request.json['title']
     image_url = request.json['image_url']
