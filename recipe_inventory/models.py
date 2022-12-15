@@ -16,12 +16,12 @@ class Recipe(db.Model):
     ready_in_min = db.Column(db.Integer)
     source_url = db.Column(db.String(300))
     num_likes = db.Column(db.Integer)
-    cuisine = db.Column(db.String(100))
+    cuisines = db.Column(db.String(100))
     summary = db.Column(db.String(5000))
     token = db.Column(db.String, nullable=False)
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
-    def __init__(self, recipeid, title, image_url, servings, ready_in_min, source_url, num_likes, cuisine, summary, token,):
+    def __init__(self, recipeid, title, image_url, servings, ready_in_min, source_url, num_likes, cuisines, summary, token,):
         self.id = self.set_id()
         self.recipeid = recipeid
         self.title = title
@@ -30,7 +30,7 @@ class Recipe(db.Model):
         self.ready_in_min = ready_in_min
         self.source_url = source_url
         self.num_likes = num_likes
-        self.cuisine = cuisine
+        self.cuisines = cuisines
         self.summary = summary
         self.token = token
 
@@ -42,7 +42,7 @@ class Recipe(db.Model):
 
 class RecipeSchema(ma.Schema):
     class Meta:
-        fields = ['id', 'recipeid', 'title', 'image_url', 'servings', 'ready_in_min', 'source_url', 'num_likes', 'cuisine', 'summary', 'token']
+        fields = ['id', 'recipeid', 'title', 'image_url', 'servings', 'ready_in_min', 'source_url', 'num_likes', 'cuisines', 'summary', 'token']
 
 recipe_schema = RecipeSchema()
 recipes_schemas = RecipeSchema(many=True)

@@ -19,13 +19,13 @@ def create_recipe(token):
     ready_in_min = request.json['ready_in_min']
     source_url = request.json['source_url']
     num_likes = request.json['num_likes']
-    cuisine = request.json['cuisine']
+    cuisines = request.json['cuisines']
     summary = request.json['summary']
     token = request.json['token']
 
     print(f"User token: {token}")
 
-    recipe = Recipe(recipeid, title, image_url, servings, ready_in_min, source_url, num_likes, cuisine, summary, token)
+    recipe = Recipe(recipeid, title, image_url, servings, ready_in_min, source_url, num_likes, cuisines, summary, token)
     db.session.add(recipe)
     db.session.commit()
 
@@ -63,7 +63,7 @@ def update_recipe(token, id):
     recipe.ready_in_min = request.json['ready_in_min']
     recipe.source_url = request.json['source_url']
     recipe.num_likes = request.json['num_likes']
-    recipe.cuisine = request.json['cuisine']
+    recipe.cuisines = request.json['cuisines']
     recipe.summary = request.json['summary']
     recipe.token = token
 
